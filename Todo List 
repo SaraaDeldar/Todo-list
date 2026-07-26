@@ -1,0 +1,43 @@
+todo_list = []
+
+while True:
+    print("\n📋 منوی کارها:")
+    print("1. اضافه کردن کار")
+    print("2. دیدن لیست")
+    print("3. حذف کار")
+    print("4. خروج")
+
+    choice = input("انتخاب کن (1-4): ")
+
+    if choice == "1":
+        task = input("کار جدید رو وارد کن: ")
+        todo_list.append(task)
+        print("✅ اضافه شد!")
+
+    elif choice == "2":
+        if not todo_list:
+            print("📭 لیست خالیه!")
+        else:
+            print("📌 لیست کارها:")
+            for i, task in enumerate(todo_list, 1):
+                print(f"{i}. {task}")
+
+    elif choice == "3":
+        if not todo_list:
+            print("📭 چیزی برای حذف نیست!")
+        else:
+            for i, task in enumerate(todo_list, 1):
+                print(f"{i}. {task}")
+            index = int(input("شماره‌ی کار رو برای حذف وارد کن: "))
+            if 1 <= index <= len(todo_list):
+                removed = todo_list.pop(index - 1)
+                print(f"🗑️ '{removed}' حذف شد!")
+            else:
+                print("❌ شماره اشتباه!")
+
+    elif choice == "4":
+        print("👋 خداحافظ!")
+        break
+
+    else:
+        print("❌ انتخاب نامعتبر!")
